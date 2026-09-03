@@ -96,6 +96,7 @@
 
 <select id="city-select">
   <option value="">Select a city...</option>
+  <option value="current">My current Location</option>
   <option value="America/Los_Angeles">Los Angeles</option>
   <option value="America/New_York">New York</option>
   <option value="Asia/Tokyo">Tokyo</option>
@@ -186,6 +187,9 @@
     // --------------------------------
 
     function updateClock(cityId, timeZone) {
+        if(timeZone === "current"){
+            timeZone = moment.tz.guess();
+        }
 
       let cityElement = document.querySelector(`#${cityId}`);
 
