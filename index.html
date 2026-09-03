@@ -1,125 +1,115 @@
 <!doctype html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.37/moment-timezone-with-data-1970-2030.min.js"></script>
 
-    <title>World Clocks</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <style>
-      body {
-        background-color: #f9f7fe;
-        font-family: Arial, Helvetica, sans-serif;
-      }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 
-      select {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        border-radius: 4px;
-      }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.37/moment-timezone-with-data-1970-2030.min.js"></script>
 
-      h1 {
-        text-align: center;
-        color: #333;
-        font-size: 2.5rem;
-      }
+  <title>World Clocks</title>
 
-      h2 {
-        margin: 0;
-        line-height: 2;
-      }
+  <style>
+    body {
+      background-color: #f9f7fe;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-      footer {
-        text-align: center;
-        margin-top: 50px;
-        color: #999;
-      }
+    select {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+    }
 
-      .container {
-        max-width: 600px;
-        margin: 60px auto;
-        background-color: #fff;
-        padding: 30px;
-        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-      }
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 2.5rem;
+    }
 
-      .city {
-        display: flex;
-        justify-content: space-between;
-        margin: 10px 0;
-        border-bottom: 1px dashed #999;
-        padding: 30px 0;
-      }
+    h2 {
+      margin: 0;
+      line-height: 2;
+    }
 
-      .city:last-child {
-        border-bottom: none;
-      }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: #999;
+    }
 
-      .time {
-        font-size: 3rem;
-        color: #333;
-        font-weight: bold;
-      }
+    .container {
+      max-width: 600px;
+      margin: 60px auto;
+      background-color: #fff;
+      padding: 30px;
+      box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
 
-      .time small {
-        font-size: 1rem;
-        color: #333;
-        vertical-align: middle;
-        line-height: 36px;
-      }
+    .city {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+      border-bottom: 1px dashed #999;
+      padding: 30px 0;
+    }
 
-      .date {
-        opacity: 0.7;
-      }
-    </style>
-  </head>
+    .city:last-child {
+      border-bottom: none;
+    }
 
-  <body>
-    <div class="container">
-      <h1>World Clocks</h1>
+    .time {
+      font-size: 3rem;
+      color: #333;
+      font-weight: bold;
+    }
 
-      <select id="city-select">
-        <option value="">Select a city...</option>
-        <option value="America/Los_Angeles">Los Angeles</option>
-        <option value="America/New_York">New York</option>
-        <option value="Asia/Tokyo">Tokyo</option>
-      </select>
+    .time small {
+      font-size: 1rem;
+      color: #333;
+      vertical-align: middle;
+      line-height: 36px;
+    }
 
-      <!-- Los Angeles -->
-      <div class="city" id="los-angeles">
-        <div>
-          <h2>Los Angeles 🇺🇸</h2>
-          <div class="date"></div>
-        </div>
+    .date {
+      opacity: 0.7;
+    }
 
-        <div class="time">
-          <span></span>
-          <small></small>
-        </div>
-      </div>
+    /* Selected city is hidden initially */
+    #selected-city {
+      display: none;
+    }
+  </style>
 
-      <!-- New York -->
-      <div class="city" id="new-york">
-        <div>
-          <h2>New York 🗽</h2>
-          <div class="date"></div>
-        </div>
+</head>
 
-        <div class="time">
-          <span></span>
-          <small></small>
-        </div>
-      </div>
+<body>
 
-      <!-- Tokyo -->
-      <!-- <div class="city" id="tokyo">
+  <div class="container">
+
+<h1>World Clocks</h1>
+
+<select id="city-select">
+  <option value="">Select a city...</option>
+  <option value="America/Los_Angeles">Los Angeles</option>
+  <option value="America/New_York">New York</option>
+  <option value="Asia/Tokyo">Tokyo</option>
+</select>
+
+
+<!-- LANDING PAGE -->
+
+<div id="landing-page">
+
+  <!-- New York -->
+  <div class="city" id="new-york">
     <div>
-      <h2>Tokyo 🇯🇵</h2>
+      <h2>New York 🗽</h2>
       <div class="date"></div>
     </div>
 
@@ -127,55 +117,221 @@
       <span></span>
       <small></small>
     </div>
-  </div> -->
+  </div>
+
+
+  <!-- Paris -->
+  <div class="city" id="paris">
+    <div>
+      <h2>Paris 🇫🇷</h2>
+      <div class="date"></div>
     </div>
 
-    <footer>
-      <p>
-        This was coded by
-        <a href="https://github.com/761011149711648" target="_blank">
-          Lerato Sithole
-        </a>
-        and is open-sourced on
-        <a
-          href="https://github.com/761011149711648/world-clocks"
-          target="_blank"
-        >
-          GitHub
-        </a>
-        and hosted on
-        <a href="#" target="_blank">Render</a>.
-      </p>
-    </footer>
+    <div class="time">
+      <span></span>
+      <small></small>
+    </div>
+  </div>
 
-    <script>
-      function updateClock(cityId, timeZone) {
-        let cityElement = document.querySelector(`#${cityId}`);
+</div>
 
-        let dateElement = cityElement.querySelector(".date");
-        let timeElement = cityElement.querySelector(".time span");
-        let amPmElement = cityElement.querySelector(".time small");
 
-        let cityTime = moment().tz(timeZone);
+<!-- SELECTED CITY -->
 
-        dateElement.innerHTML = cityTime.format("MMMM Do YYYY");
+<div id="selected-city">
 
-        timeElement.innerHTML = cityTime.format("h:mm:ss");
+  <div class="city">
 
-        amPmElement.innerHTML = cityTime.format("A");
+    <div>
+      <h2 id="selected-city-name"></h2>
+      <div class="date" id="selected-city-date"></div>
+    </div>
+
+    <div class="time">
+      <span id="selected-city-time"></span>
+      <small id="selected-city-ampm"></small>
+    </div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  <footer>
+    <p>
+      This was coded by
+      <a
+        href="https://github.com/761011149711648"
+        target="_blank"
+      >
+        Lerato Sithole
+      </a>
+      and is open-sourced on
+      <a
+        href="https://github.com/761011149711648/world-clocks"
+        target="_blank"
+      >
+        GitHub
+      </a>
+      and hosted on
+      <a href="#" target="_blank">Render</a>.
+    </p>
+  </footer>
+
+  <script>
+
+    // --------------------------------
+    // LANDING PAGE CLOCKS
+    // --------------------------------
+
+    function updateClock(cityId, timeZone) {
+
+      let cityElement = document.querySelector(`#${cityId}`);
+
+      let dateElement = cityElement.querySelector(".date");
+
+      let timeElement = cityElement.querySelector(".time span");
+
+      let amPmElement = cityElement.querySelector(".time small");
+
+      let cityTime = moment().tz(timeZone);
+
+      dateElement.innerHTML = cityTime.format("MMMM Do YYYY");
+
+      timeElement.innerHTML = cityTime.format("h:mm:ss");
+
+      amPmElement.innerHTML = cityTime.format("A");
+    }
+
+
+    function updateLandingPage() {
+
+      updateClock(
+        "new-york",
+        "America/New_York"
+      );
+
+      updateClock(
+        "paris",
+        "Europe/Paris"
+      );
+    }
+
+
+    // --------------------------------
+    // SELECT ELEMENT
+    // --------------------------------
+
+    let citySelect = document.querySelector("#city-select");
+
+    let landingPage = document.querySelector("#landing-page");
+
+    let selectedCity = document.querySelector("#selected-city");
+
+    let selectedCityName =
+      document.querySelector("#selected-city-name");
+
+    let selectedCityDate =
+      document.querySelector("#selected-city-date");
+
+    let selectedCityTime =
+      document.querySelector("#selected-city-time");
+
+    let selectedCityAmPm =
+      document.querySelector("#selected-city-ampm");
+
+
+    // --------------------------------
+    // UPDATE SELECTED CITY
+    // --------------------------------
+
+    function updateSelectedCity() {
+
+      let timeZone = citySelect.value;
+
+      if (timeZone === "") {
+
+        // Show landing page
+        landingPage.style.display = "block";
+
+        // Hide selected city
+        selectedCity.style.display = "none";
+
+        return;
       }
 
-      function updateClocks() {
-        updateClock("los-angeles", "America/Los_Angeles");
-        updateClock("new-york", "America/New_York");
-        /*updateClock("tokyo", "Asia/Tokyo");*/
+
+      // Hide landing page
+      landingPage.style.display = "none";
+
+      // Show selected city
+      selectedCity.style.display = "block";
+
+
+      // Get selected city name
+      let cityName =
+        citySelect.options[
+          citySelect.selectedIndex
+        ].text;
+
+
+      // Display city name
+      selectedCityName.innerHTML = cityName;
+
+
+      // Get current time
+      let cityTime = moment().tz(timeZone);
+
+
+      // Display date
+      selectedCityDate.innerHTML =
+        cityTime.format("MMMM Do YYYY");
+
+
+      // Display time
+      selectedCityTime.innerHTML =
+        cityTime.format("h:mm:ss");
+
+
+      // Display AM / PM
+      selectedCityAmPm.innerHTML =
+        cityTime.format("A");
+    }
+
+
+    // --------------------------------
+    // WHEN USER SELECTS A CITY
+    // --------------------------------
+
+    citySelect.addEventListener(
+      "change",
+      updateSelectedCity
+    );
+
+
+    // --------------------------------
+    // INITIAL PAGE LOAD
+    // --------------------------------
+
+    updateLandingPage();
+
+
+    // Keep landing page clocks updated
+    setInterval(updateLandingPage, 1000);
+
+
+    // Keep selected city updated
+    setInterval(function () {
+
+      if (citySelect.value !== "") {
+        updateSelectedCity();
       }
 
-      // Update immediately
-      updateClocks();
+    }, 1000);
 
-      // Update every second
-      setInterval(updateClocks, 1000);
-    </script>
-  </body>
+  </script>
+
+</body>
+
 </html>
