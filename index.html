@@ -1,105 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.37/moment-timezone-with-data-1970-2030.min.js"></script>
+
     <title>World Clocks</title>
+
     <style>
-        body{
-            background-color: #f9f7fe;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        select{
-            display: block;
-            width: 100%;
-            padding: 10px;
-            border-radius: 4px;
-        }
-        h1{
-            text-align: center;
-            color: #333;
-            font-size: 2.5rem;
-        }
-        h2{
-          margin: 0; 
-          line-height: 2; 
-        }
-        footer{
-            text-align: center;
-            margin-top: 50px;
-            color: #999;
-        }
-        .container{
-            max-width: 600px;
-            margin: 60px auto;
-            background-color: #fff;
-            padding: 30px;
-            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        .city{
-            display: flex;
-            justify-content: space-between;
-            margin: 10px 0;
-            border-bottom: 1px dashed #999;
-            padding: 30px 0;
-        }
-        .city:last-child{
-            border-bottom: none;
-        }
-        .time{
-            font-size: 3rem;
-            color: #333;
-            font-weight: bold;
-        }
-        .time small{
-            font-size: 1rem;
-            color: #333;
-            vertical-align: middle;
-            line-height: 36px;
-        }
-        .date{
-            opacity: 0.7;
-        }
+      body {
+        background-color: #f9f7fe;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      select {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border-radius: 4px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        font-size: 2.5rem;
+      }
+
+      h2 {
+        margin: 0;
+        line-height: 2;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 50px;
+        color: #999;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 60px auto;
+        background-color: #fff;
+        padding: 30px;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+
+      .city {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+        border-bottom: 1px dashed #999;
+        padding: 30px 0;
+      }
+
+      .city:last-child {
+        border-bottom: none;
+      }
+
+      .time {
+        font-size: 3rem;
+        color: #333;
+        font-weight: bold;
+      }
+
+      .time small {
+        font-size: 1rem;
+        color: #333;
+        vertical-align: middle;
+        line-height: 36px;
+      }
+
+      .date {
+        opacity: 0.7;
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
     <div class="container">
-        <h1>World Clocks</h1>
+      <h1>World Clocks</h1>
 
-        <select>
-            <option value="">Select a city...</option>
-            <option value="">London</option>
-            <option value="">New York</option>
-            <option value="">Tokyo</option>
-        </select>
+      <select id="city-select">
+        <option value="">Select a city...</option>
+        <option value="America/Los_Angeles">Los Angeles</option>
+        <option value="America/New_York">New York</option>
+        <option value="Asia/Tokyo">Tokyo</option>
+      </select>
 
-        <div class="city">
-            <div>
-                <h2>New York 🗽</h2>
-                <div class="date">August 15th 2022</div>
-            </div>
-            <div class="time">01:48:15 
-                <small>AM</small>
-            </div>
+      <!-- Los Angeles -->
+      <div class="city" id="los-angeles">
+        <div>
+          <h2>Los Angeles 🇺🇸</h2>
+          <div class="date"></div>
         </div>
-        <div class="city">
-            <div>
-                <h2>New York 🗽</h2>
-                <div class="date">August 15th 2022</div>
-            </div>
-            <div class="time">01:48:15 
-                <small>AM</small>
-            </div>
+
+        <div class="time">
+          <span></span>
+          <small></small>
         </div>
-    </div>    
-        <footer>
-           <p>
-            This was coded by 
-            <a href="https://github.com/761011149711648" target="_blank">Lerato Sithole</a> and is open-sourced on 
-            <a href="https://github.com/761011149711648/world-clocks" target="_blank">GitHub</a> and hosted on 
-            <a href="#" target="_blank">Render</a>.
-           </p>
-        </footer>
-</body>
+      </div>
+
+      <!-- New York -->
+      <div class="city" id="new-york">
+        <div>
+          <h2>New York 🗽</h2>
+          <div class="date"></div>
+        </div>
+
+        <div class="time">
+          <span></span>
+          <small></small>
+        </div>
+      </div>
+
+      <!-- Tokyo -->
+      <!-- <div class="city" id="tokyo">
+    <div>
+      <h2>Tokyo 🇯🇵</h2>
+      <div class="date"></div>
+    </div>
+
+    <div class="time">
+      <span></span>
+      <small></small>
+    </div>
+  </div> -->
+    </div>
+
+    <footer>
+      <p>
+        This was coded by
+        <a href="https://github.com/761011149711648" target="_blank">
+          Lerato Sithole
+        </a>
+        and is open-sourced on
+        <a
+          href="https://github.com/761011149711648/world-clocks"
+          target="_blank"
+        >
+          GitHub
+        </a>
+        and hosted on
+        <a href="#" target="_blank">Render</a>.
+      </p>
+    </footer>
+
+    <script>
+      function updateClock(cityId, timeZone) {
+        let cityElement = document.querySelector(`#${cityId}`);
+
+        let dateElement = cityElement.querySelector(".date");
+        let timeElement = cityElement.querySelector(".time span");
+        let amPmElement = cityElement.querySelector(".time small");
+
+        let cityTime = moment().tz(timeZone);
+
+        dateElement.innerHTML = cityTime.format("MMMM Do YYYY");
+
+        timeElement.innerHTML = cityTime.format("h:mm:ss");
+
+        amPmElement.innerHTML = cityTime.format("A");
+      }
+
+      function updateClocks() {
+        updateClock("los-angeles", "America/Los_Angeles");
+        updateClock("new-york", "America/New_York");
+        /*updateClock("tokyo", "Asia/Tokyo");*/
+      }
+
+      // Update immediately
+      updateClocks();
+
+      // Update every second
+      setInterval(updateClocks, 1000);
+    </script>
+  </body>
 </html>
